@@ -43,6 +43,8 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 
 ### 4.1 Transmitter – Arduino Pro Micro
 
+<img width="778" height="415" alt="image" src="https://github.com/user-attachments/assets/d2e66f18-87d6-4371-9d53-872ae9ab7290" />
+
 | Module Pin | Arduino Pro Micro Pin |
 |---|---|
 | DHT11 DATA | D4 |
@@ -55,6 +57,8 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 | nRF24L01 MISO | D14 |
 
 ### 4.2 Receiver – Arduino UNO
+
+<img width="973" height="343" alt="image" src="https://github.com/user-attachments/assets/190772b6-7d88-4f4e-b924-f0f5f8adac29" />
 
 | Module Pin | Arduino UNO Pin |
 |---|---|
@@ -69,6 +73,9 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 | OLED SCL | A5 |
 
 **Note:** The nRF24L01 module requires a stable 3.3V power supply. The OLED power connections should follow the specifications of the particular display module.
+
+### 4.3 Expected Output
+<img width="896" height="145" alt="image" src="https://github.com/user-attachments/assets/3b8321a2-780e-4eca-ba61-b6b705a31d1b" />
 
 ## 5. Software Libraries
 
