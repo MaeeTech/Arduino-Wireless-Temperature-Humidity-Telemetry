@@ -1,12 +1,10 @@
 # Wireless Temperature and Humidity Telemetry System
 
-## 1. Project Overview
-
 This project is an Arduino-based wireless telemetry system designed to measure and monitor environmental temperature and relative humidity.
 
 The system uses a DHT11 sensor to collect environmental data and nRF24L01 modules to transmit the measurements wirelessly at 2.4 GHz. The received data is processed by an Arduino UNO and displayed on a 128×64 SH1106 OLED display.
 
-## 2. Project Architecture
+## 1. Project Architecture
 <img width="786" height="524" alt="image" src="https://github.com/user-attachments/assets/719ebe6c-989a-4252-8fbc-d70bce024f7a" />
 
 The system consists of two main units:
@@ -25,7 +23,7 @@ The transmitter reads temperature and humidity measurements, processes the data,
 
 The receiver obtains the transmitted packets, checks their integrity, tracks packet sequence numbers, estimates packet losses, and displays valid measurements on the OLED screen.
 
-## 3. Hardware Components
+## 2. Hardware Components
 
 | Component | Quantity | Function |
 |---|---:|---|
@@ -36,9 +34,9 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 | SH1106 OLED Display (128×64) | 1 | Displaying received data |
 | Jumper Wires | As required | Electrical connections |
 
-## 4. Pin Connections
+## 3. Pin Connections
 
-### 4.1 Transmitter – Arduino Pro Micro
+### 3.1 Transmitter – Arduino Pro Micro
 
 <img width="778" height="415" alt="image" src="https://github.com/user-attachments/assets/d2e66f18-87d6-4371-9d53-872ae9ab7290" />
 
@@ -53,7 +51,7 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 | nRF24L01 MOSI | D16 |
 | nRF24L01 MISO | D14 |
 
-### 4.2 Receiver – Arduino UNO
+### 3.2 Receiver – Arduino UNO
 
 <img width="973" height="343" alt="image" src="https://github.com/user-attachments/assets/190772b6-7d88-4f4e-b924-f0f5f8adac29" />
 
@@ -71,11 +69,11 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 
 **Note:** The nRF24L01 module requires a stable 3.3V power supply. The OLED power connections should follow the specifications of the particular display module.
 
-### 4.3 Expected Output
+### 3.3 Expected Output
 <img width="719" height="404" alt="image" src="https://github.com/user-attachments/assets/2a4e7fe3-3a07-48e9-9211-e4988a2dc733" />
 
 
-## 5. Software Libraries
+## 4. Software Libraries
 
 The following libraries are used in the project:
 
@@ -94,13 +92,13 @@ The following libraries are used in the project:
 - Adafruit DHT Sensor Library
 - U8g2 Graphics Library by Oliver Kraus
 
-## 6. Software and Development Tools
+## 5. Software and Development Tools
 
 - **Arduino IDE:** Used for writing, compiling, uploading, and debugging the transmitter and receiver firmware.
 - **Autodesk Tinkercad:** Used for circuit design and simulation where supported.
 - **Arduino Serial Monitor:** Used for monitoring sensor readings, packet information, and communication status.
 
-## 7. Main Technical Concepts
+## 6. Main Technical Concepts
 
 The project demonstrates several important embedded systems and wireless communication concepts:
 
@@ -115,7 +113,7 @@ The project demonstrates several important embedded systems and wireless communi
 - **Sequence Number:** Identification of duplicate, outdated, and potentially lost packets.
 - **Timeout Detection:** Identification of communication interruptions.
 
-## 9. Project Applications
+## 7. Project Applications
 
 - Remote environmental monitoring
 - Indoor temperature and humidity monitoring
@@ -124,7 +122,7 @@ The project demonstrates several important embedded systems and wireless communi
 - Wireless sensor network experiments
 - Educational embedded systems projects
 
-## 10. Project Limitations
+## 8. Project Limitations
 
 - Limited measurement accuracy of the DHT11 sensor.
 - Wireless range depends on antenna performance, power supply, and environmental conditions.
@@ -134,7 +132,7 @@ The project demonstrates several important embedded systems and wireless communi
 - Packet loss estimation is based on sequence number differences.
 - The system is intended for educational and experimental applications, not safety-critical industrial monitoring.
 
-## 11. Future Improvements
+## 9. Future Improvements
 
 - Replacing DHT11 with a higher-accuracy sensor such as DHT22 or BME280.
 - Adding SD card data logging.
@@ -144,7 +142,7 @@ The project demonstrates several important embedded systems and wireless communi
 - Implementing data encryption and authentication.
 - Evaluating communication range, packet delivery ratio, and measurement accuracy through practical tests.
 
-## 12. Author
+## 10. Author
 
 **Name:** [MaeeTech]  
 **Field:** Electrical Engineering  
