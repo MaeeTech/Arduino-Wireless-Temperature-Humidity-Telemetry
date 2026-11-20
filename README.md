@@ -101,7 +101,6 @@ The following libraries are used in the project:
 - **Arduino IDE:** Used for writing, compiling, uploading, and debugging the transmitter and receiver firmware.
 - **Autodesk Tinkercad:** Used for circuit design and simulation where supported.
 - **Arduino Serial Monitor:** Used for monitoring sensor readings, packet information, and communication status.
-- **GitHub:** Used for source code hosting and project documentation.
 
 ## 7. Main Technical Concepts
 
@@ -117,20 +116,6 @@ The project demonstrates several important embedded systems and wireless communi
 - **Auto ACK:** Automatic acknowledgment and configured retransmission.
 - **Sequence Number:** Identification of duplicate, outdated, and potentially lost packets.
 - **Timeout Detection:** Identification of communication interruptions.
-
-## 8. Project Operation
-
-The system operates through the following sequence:
-
-1. The DHT11 sensor measures ambient temperature and relative humidity.
-2. Arduino Pro Micro reads and processes the sensor measurements.
-3. The measurements are converted into scaled integer values.
-4. An 8-byte packet is created, containing a sequence number, temperature, humidity, and CRC.
-5. The transmitter sends the packet through the nRF24L01 module.
-6. The receiver obtains the packet through its nRF24L01 module.
-7. Arduino UNO validates the CRC, checks the sequence number, and verifies the measurement ranges.
-8. Valid temperature and humidity values are displayed on the SH1106 OLED screen.
-9. If no valid packet is received for more than three seconds, a communication timeout is indicated.
 
 ## 9. Project Applications
 
