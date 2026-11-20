@@ -1,4 +1,4 @@
-# Wireless Temperature and Humidity Telemetry System
+## Wireless Temperature and Humidity Telemetry System
 
 ## 1. Project Overview
 
