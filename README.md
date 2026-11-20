@@ -75,7 +75,8 @@ The receiver obtains the transmitted packets, checks their integrity, tracks pac
 **Note:** The nRF24L01 module requires a stable 3.3V power supply. The OLED power connections should follow the specifications of the particular display module.
 
 ### 4.3 Expected Output
-<img width="896" height="145" alt="image" src="https://github.com/user-attachments/assets/3b8321a2-780e-4eca-ba61-b6b705a31d1b" />
+<img width="719" height="404" alt="image" src="https://github.com/user-attachments/assets/2a4e7fe3-3a07-48e9-9211-e4988a2dc733" />
+
 
 ## 5. Software Libraries
 
