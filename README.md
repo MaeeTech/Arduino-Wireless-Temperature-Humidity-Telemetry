@@ -10,8 +10,11 @@ The system consists of a transmitter and a receiver.
 Transmitter Unit
 The transmitter consists of an Arduino Pro Micro, a DHT11 sensor, and an nRF24L01 wireless transceiver.
 Its main operations are:
+
 ▪Measuring temperature and relative humidity using the DHT11 sensor.
+
 ▪Reading and processing the sensor measurements.
+
 ▪Converting floating-point measurements into scaled integer values.
 ▪Assigning a sequence number to each data packet.
 ▪Calculating the software CRC value.
