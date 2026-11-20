@@ -1,159 +1,166 @@
 # Arduino-Wireless-Temperature-Humidity-Telemetry
 Wireless temperature and humidity monitoring and telemetry system using Arduino Pro Micro, Arduino UNO, DHT11 sensor, and nRF24L01 wireless communication modules.
 
-System Overview
+# Wireless Temperature and Humidity Telemetry System
 
-This project is a wireless temperature and humidity telemetry system designed to measure environmental conditions and transmit the collected data between two Arduino-based units.
+## 1. Project Overview
 
-The system consists of a transmitter and a receiver.
+This project is an Arduino-based wireless telemetry system designed to measure and monitor environmental temperature and relative humidity.
+
+The system uses a DHT11 sensor to collect environmental data and nRF24L01 modules to transmit the measurements wirelessly at 2.4 GHz. The received data is processed by an Arduino UNO and displayed on a 128×64 SH1106 OLED display.
+
+## 2. Project Architecture
+
+The system consists of two main units:
 
-Transmitter Unit
-The transmitter consists of an Arduino Pro Micro, a DHT11 sensor, and an nRF24L01 wireless transceiver.
-Its main operations are:
+### Transmitter Unit
+- Arduino Pro Micro
+- DHT11 Temperature and Humidity Sensor
+- nRF24L01 Wireless Transceiver
 
-▪Measuring temperature and relative humidity using the DHT11 sensor.
-
-▪Reading and processing the sensor measurements.
-
-▪Converting floating-point measurements into scaled integer values.
-
-▪Assigning a sequence number to each data packet.
-
-▪Calculating the software CRC value.
-
-▪Transmitting the prepared data packet through the nRF24L01 module.
-
-Receiver Unit
-
-The receiver consists of an Arduino UNO, an nRF24L01 wireless transceiver, and an SH1106 OLED display.
-
-Its main operations are:
-
-Receiving wireless data packets.
-
-Extracting the transmitted measurement values.
-
-Recalculating and verifying the software CRC.
-
-Checking packet sequence numbers.
-
-Estimating the number of lost packets.
-
-Converting the received integer values back into temperature and humidity measurements.
-
-Displaying valid measurements on the OLED screen.
-
-Detecting communication interruptions using a timeout mechanism.
-
-Project Objectives
-1) Temperature and environmental measurement
-2) Wireless transmission of data from one board to another
-3) Receiving and verifying the accuracy of the data
-4) Detecting potential errors during data transmission
-5) Counting lost packets and detecting connection loss
-System Features
-
-The main features of the implemented system include:
-
-Wireless temperature and humidity monitoring.
-
-2.4 GHz communication using nRF24L01 modules.
-
-Separate transmitter and receiver programs.
-
-Structured 8-byte data packet.
-
-Software CRC-16/CCITT-FALSE error detection.
-
-Hardware CRC support provided by the nRF24L01 modules.
-
-Automatic acknowledgment (Auto ACK).
-
-Automatic retransmission configuration.
-
-Packet sequence number tracking.
-
-Packet loss estimation.
-
-Communication timeout detection.
-
-Hardware Components
-
-The following hardware components are used in this project:
-
-Component
-
-Quantity
-
-Function
-
-Arduino Pro Micro
-
-1
-
-Transmitter microcontroller
-
-Arduino UNO
-
-1
-
-Receiver microcontroller
-
-DHT11 Sensor
-
-1
-
-Temperature and humidity measurement
-
-nRF24L01 Module
-
-2
-
-Wireless data transmission and reception
-
-SH1106 OLED Display (128×64)
-
-1
-
-Displaying received measurements
-
-Jumper Wires
-
-As required
-
-Electrical connections
-
-Software Libraries
-Library
-
-Purpose
-
-SPI.h
-
-SPI communication with nRF24L01 modules
-
-RF24.h
-
-Configuration and control of nRF24L01 modules
-
-DHT.h
-
-Reading temperature and humidity from the DHT11 sensor
-
-Wire.h
-
-I2C communication with the OLED display
-
-U8g2lib.h
-
-OLED graphics and text rendering
-
-stddef.h
-
-Standard definitions, including structure offset calculations
-
-stdint.h
-
-Fixed-width integer data types
-
+The transmitter reads temperature and humidity measurements, processes the data, creates an 8-byte data packet, calculates its software CRC, and sends it wirelessly.
+
+### Receiver Unit
+- Arduino UNO
+- nRF24L01 Wireless Transceiver
+- SH1106 128×64 OLED Display
+
+The receiver obtains the transmitted packets, checks their integrity, tracks packet sequence numbers, estimates packet losses, and displays valid measurements on the OLED screen.
+
+## 3. Hardware Components
+
+| Component | Quantity | Function |
+|---|---:|---|
+| Arduino Pro Micro | 1 | Transmitter controller |
+| Arduino UNO | 1 | Receiver controller |
+| DHT11 Sensor | 1 | Temperature and humidity measurement |
+| nRF24L01 Module | 2 | Wireless communication |
+| SH1106 OLED Display (128×64) | 1 | Displaying received data |
+| Jumper Wires | As required | Electrical connections |
+
+## 4. Pin Connections
+
+### 4.1 Transmitter – Arduino Pro Micro
+
+| Module Pin | Arduino Pro Micro Pin |
+|---|---|
+| DHT11 DATA | D4 |
+| nRF24L01 VCC | 3.3V |
+| nRF24L01 GND | GND |
+| nRF24L01 CE | D9 |
+| nRF24L01 CSN | D10 |
+| nRF24L01 SCK | D15 |
+| nRF24L01 MOSI | D16 |
+| nRF24L01 MISO | D14 |
+
+### 4.2 Receiver – Arduino UNO
+
+| Module Pin | Arduino UNO Pin |
+|---|---|
+| nRF24L01 VCC | 3.3V |
+| nRF24L01 GND | GND |
+| nRF24L01 CE | D9 |
+| nRF24L01 CSN | D10 |
+| nRF24L01 SCK | D13 |
+| nRF24L01 MOSI | D11 |
+| nRF24L01 MISO | D12 |
+| OLED SDA | A4 |
+| OLED SCL | A5 |
+
+**Note:** The nRF24L01 module requires a stable 3.3V power supply. The OLED power connections should follow the specifications of the particular display module.
+
+## 5. Software Libraries
+
+The following libraries are used in the project:
+
+| Library | Purpose |
+|---|---|
+| SPI.h | SPI communication |
+| RF24.h | nRF24L01 configuration and wireless communication |
+| DHT.h | Reading temperature and humidity |
+| Wire.h | I2C communication with the OLED display |
+| U8g2lib.h | OLED graphics and text rendering |
+| stddef.h | Standard definitions and structure offset calculations |
+| stdint.h | Fixed-width integer data types |
+
+### External Libraries
+- RF24 Library by TMRh20
+- Adafruit DHT Sensor Library
+- U8g2 Graphics Library by Oliver Kraus
+
+## 6. Software and Development Tools
+
+- **Arduino IDE:** Used for writing, compiling, uploading, and debugging the transmitter and receiver firmware.
+- **Autodesk Tinkercad:** Used for circuit design and simulation where supported.
+- **Arduino Serial Monitor:** Used for monitoring sensor readings, packet information, and communication status.
+- **GitHub:** Used for source code hosting and project documentation.
+
+## 7. Main Technical Concepts
+
+The project demonstrates several important embedded systems and wireless communication concepts:
+
+- **Wireless Communication:** Data transmission using nRF24L01 modules in the 2.4 GHz band.
+- **SPI Interface:** Communication between Arduino boards and nRF24L01 modules.
+- **I2C Interface:** Communication between Arduino UNO and the OLED display.
+- **Data Packet Structure:** Transmission of measurements and control information in an 8-byte packet.
+- **Fixed-Point Representation:** Scaling temperature and humidity values by 100 before transmission.
+- **CRC-16/CCITT-FALSE:** Software-based error detection for transmitted application data.
+- **Hardware CRC:** Radio-level packet error detection using the nRF24L01.
+- **Auto ACK:** Automatic acknowledgment and configured retransmission.
+- **Sequence Number:** Identification of duplicate, outdated, and potentially lost packets.
+- **Timeout Detection:** Identification of communication interruptions.
+
+## 8. Project Operation
+
+The system operates through the following sequence:
+
+1. The DHT11 sensor measures ambient temperature and relative humidity.
+2. Arduino Pro Micro reads and processes the sensor measurements.
+3. The measurements are converted into scaled integer values.
+4. An 8-byte packet is created, containing a sequence number, temperature, humidity, and CRC.
+5. The transmitter sends the packet through the nRF24L01 module.
+6. The receiver obtains the packet through its nRF24L01 module.
+7. Arduino UNO validates the CRC, checks the sequence number, and verifies the measurement ranges.
+8. Valid temperature and humidity values are displayed on the SH1106 OLED screen.
+9. If no valid packet is received for more than three seconds, a communication timeout is indicated.
+
+## 9. Project Applications
+
+- Remote environmental monitoring
+- Indoor temperature and humidity monitoring
+- Greenhouse monitoring
+- Storage environment monitoring
+- Wireless sensor network experiments
+- Educational embedded systems projects
+
+## 10. Project Limitations
+
+- Limited measurement accuracy of the DHT11 sensor.
+- Wireless range depends on antenna performance, power supply, and environmental conditions.
+- No permanent data logging is currently implemented.
+- No Internet or cloud connectivity.
+- No cryptographic encryption or authentication.
+- Packet loss estimation is based on sequence number differences.
+- The system is intended for educational and experimental applications, not safety-critical industrial monitoring.
+
+## 11. Future Improvements
+
+- Replacing DHT11 with a higher-accuracy sensor such as DHT22 or BME280.
+- Adding SD card data logging.
+- Developing a PC or web-based monitoring dashboard.
+- Adding Wi-Fi or Internet connectivity.
+- Improving wireless range and power management.
+- Implementing data encryption and authentication.
+- Evaluating communication range, packet delivery ratio, and measurement accuracy through practical tests.
+
+## 12. Author
+
+**Name:** [Your Full Name]  
+**Field:** Electrical Engineering  
+**Project Title:** Wireless Temperature and Humidity Telemetry System  
+**Platform:** Arduino-Based Embedded System
+
+## 13. Acknowledgments
+
+This project uses open-source Arduino libraries and technical resources, including RF24 by TMRh20, the Adafruit DHT Sensor Library, and U8g2 by Oliver Kraus.
 
