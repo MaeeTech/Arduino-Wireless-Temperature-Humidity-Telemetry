@@ -10,6 +10,7 @@ This project is an Arduino-based wireless telemetry system designed to measure a
 The system uses a DHT11 sensor to collect environmental data and nRF24L01 modules to transmit the measurements wirelessly at 2.4 GHz. The received data is processed by an Arduino UNO and displayed on a 128×64 SH1106 OLED display.
 
 ## 2. Project Architecture
+<img width="786" height="524" alt="image" src="https://github.com/user-attachments/assets/719ebe6c-989a-4252-8fbc-d70bce024f7a" />
 
 The system consists of two main units:
 
@@ -155,12 +156,7 @@ The system operates through the following sequence:
 
 ## 12. Author
 
-**Name:** [Your Full Name]  
+**Name:** [MaeeTech]  
 **Field:** Electrical Engineering  
 **Project Title:** Wireless Temperature and Humidity Telemetry System  
 **Platform:** Arduino-Based Embedded System
-
-## 13. Acknowledgments
-
-This project uses open-source Arduino libraries and technical resources, including RF24 by TMRh20, the Adafruit DHT Sensor Library, and U8g2 by Oliver Kraus.
-
