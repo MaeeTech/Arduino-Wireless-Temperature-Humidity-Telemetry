@@ -1,5 +1,4 @@
 ## Wireless Temperature and Humidity Telemetry System
-
 ## 1. Project Overview
 
 This project is an Arduino-based wireless telemetry system designed to measure and monitor environmental temperature and relative humidity.
